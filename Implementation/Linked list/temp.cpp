@@ -1,36 +1,81 @@
-/*
-Merging two array with single loop while loop.
-*/
-
 #include<iostream>
 using namespace std;
 
-int main()
+class node
 {
-    int size1 = 5, size2 = 5,size3=size1+size2;
-    int arr1[size1] = {2,3,4,5,6};
-    int arr2[size2] = {10,11,12,13,14};
-    int arr3[size3]={0};
-    int i=0;
-    int j=0;
-    while(i<size3)
+public:
+    int reg;
+    char grade;
+    node* next;
+
+    node(int reg, char grade)
     {
-        if(i<size1)
-        {
-            arr3[i] = arr1[i];
-            i++;
-        }
-        else
-        {
-            arr3[i] = arr2[j];
-            i++;
-            j++;
-        }
+        this -> reg = reg;
+        this -> grade = grade;
+        this -> next = NULL;
     }
 
-    for(int i=0; i<size3; i++)
+};
+
+void insert_begin(node* &head, node* &tail, int reg, char grade)
+{
+    if( head == NULL)
     {
-        cout << arr3[i] << " ";
+        node* new_node = new node(reg, grade);
+        head = new_node;
+        tail = new_node;
+    }
+    else
+    {
+        node* new_node = new node(reg, grade);
+        new_node -> next = head;
+        head = new_node;
+    }
+}
+
+void insert_end(node* &head, node* &tail, int reg, char grade)
+{
+    if( tail == NULL)
+    {
+        node* new_node = new node(reg,grade);
+        tail = new_node;
+        head = new_node;
+    }
+    else
+    {
+        node* new_node = new node(reg, grade);
+        tail -> next = new_node;
+
+        tail = new_node;
+    }
+}
+
+void search_record(node* &head)
+{
+    node* temp = head;
+    int reg;
+    cout << "Enter the regi no. to see the record: " << endl;
+    cin >> reg;
+}
+int main()
+{
+
+
+    node* head = NULL;
+    node* tail = NULL;
+    cout << "How many records do you want to store: ";
+    cin >> rec;
+    cout << "Enter the registration no and grade of 5 students: " << endl;
+    for(int i =1; i<=rec; i++)
+    {
+        int reg;
+        char grade;
+        cout << "For Student " << i <<": " << endl;
+        cout << "registration: ";
+        cin >> reg;
+        cout << "grade: ";
+        cin >> grade;
+        insert_end(head,tail,reg,grade);
     }
     return 0;
 }
