@@ -18,7 +18,7 @@ void shift_negative(int arr[],int size)
             p++;
         }
     }
-
+// printing the array.
     for(int i=0; i< size; i++)
     {
         cout << arr[i] << " ";
