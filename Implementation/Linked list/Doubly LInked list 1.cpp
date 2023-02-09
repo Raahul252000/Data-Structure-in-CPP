@@ -138,8 +138,15 @@ void delete_any_node(node* &head, node* &tail, int position)
     {
         delete_end(tail);
     }
+
+    temp -> previous -> next = temp -> next;
+    temp -> next -> previous = temp -> previous;
+    temp -> next = NULL;
+    temp -> previous = NULL;
+    delete temp;
+
 }
-void print_LL(node* &head)
+void print_DLL(node* &head)
 {
     node* temp = head;
     while(temp != NULL)
@@ -174,10 +181,9 @@ int main()
     delete_end(tail);                       // DLL: 5 10
 
     insert_at_anypoint(head,tail,2,20);
+    //delete_any_node(head,tail,2);
 
-    //delete_any_node(head,tail,3);
-    //delete_end(tail);
-    print_LL(head);
+    print_DLL(head);
 
     return 0;
 }
