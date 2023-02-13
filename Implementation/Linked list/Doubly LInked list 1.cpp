@@ -94,58 +94,6 @@ void insert_at_anypoint(node* &head, node* &tail, int position, int data)
         new_node -> previous = temp;  // here we are storing the address of previous node into the 'previous' field of new_node
 }
 
-/*if we want to delete the 1st node, then we need to set the 'previous' of 2nd node to NULL, store the address of 2nd node
-into head and set the 'next' of first node to NULL.*/
-
-void delete_begin(node* &head)
-{
-    node* temp = head;
-    temp-> next -> previous = NULL;
-    head = temp -> next;
-    temp -> next = NULL;
-    delete temp;
-}
-
-/*
-if u want to delete the last node of DLL then, set the 'next' of last 2nd node to 'NULL' and then set
-    the 'previous' of last node to NULL.
-*/
-void delete_end(node* &tail)
-{
-    node* temp = tail;
-    temp -> previous -> next = NULL;   // here we stored 'NULL' into the 'next' field of last 2nd node.
-    tail = temp -> previous;           // so our last node is now last 2nd node, therefore we need to update the tail.
-    temp -> previous = NULL;           // as our temp was the old last node therefore we are storing 'NULL' into its previous.
-
-    delete temp; // deleting the last node.
-}
-
-void delete_any_node(node* &head, node* &tail, int position)
-{
-    if(position == 1)
-    {
-        delete_begin(head);
-    }
-
-    int count = 1;
-    node* temp = head;
-    while(count < position)
-    {
-        temp = temp -> next;
-    }
-
-    if(temp->next  == NULL)
-    {
-        delete_end(tail);
-    }
-
-    temp -> previous -> next = temp -> next;
-    temp -> next -> previous = temp -> previous;
-    temp -> next = NULL;
-    temp -> previous = NULL;
-    delete temp;
-
-}
 void print_DLL(node* &head)
 {
     node* temp = head;
@@ -172,16 +120,10 @@ int main()
     node* head = NULL;
     node* tail = NULL;
 
-    insert_begin(head,tail,5);              // DLL: 5
-    insert_at_anypoint(head,tail,2,10);     // DLL: 5 10
-    insert_end(head,tail,15);               // DLL: 5 10 15
-    insert_begin(head,tail,20);             // DLL: 20 5 10 15
-
-    delete_begin(head);                     // DLL: 5 10 15
-    delete_end(tail);                       // DLL: 5 10
-
-    insert_at_anypoint(head,tail,2,20);
-    //delete_any_node(head,tail,2);
+    insert_at_anypoint(head,tail,1,5);
+    insert_end(head,tail,10);
+    insert_begin(head,tail,15);
+    insert_at_anypoint(head,tail,4,20);
 
     print_DLL(head);
 
