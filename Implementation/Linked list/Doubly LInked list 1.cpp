@@ -41,9 +41,7 @@ void insert_begin(node* &head,node* &tail,int data)
         new_node -> next = head;           // here we are storing the address of 1st node in the next of new_node so it will be added in front of 1st node.
         head -> previous = new_node;       // here we are storing the address of new_node into the previous of 1st node.
         head = new_node;               // now as the new_node has become the 1st node therefore we need to update the head.
-
     }
-
 }
 
 void insert_end(node* &head, node* &tail, int data)

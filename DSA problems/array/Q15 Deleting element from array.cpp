@@ -11,7 +11,7 @@ void delete_element(int arr[]; int size; int ele)
     int i;
     for(i=0; i<size; i++)
     {
-        if(arr[i] == ele)
+        if(arr[i] == ele)      // here we are traversing to the element which is to be deleted, when we will get the element into the array, we will break the loop.
         {
             break;
         }
@@ -19,7 +19,7 @@ void delete_element(int arr[]; int size; int ele)
 
     while(i < size)
     {
-        arr[i] = arr[i+1];
+        arr[i] = arr[i+1];       // here we, shifting all the elements to left which are present after the target element.
         i++;
     }
     size = size-1;
