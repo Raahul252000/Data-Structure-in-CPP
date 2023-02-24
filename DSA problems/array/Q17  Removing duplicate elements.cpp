@@ -4,6 +4,10 @@ time then we will shift the elements to left side and decrease the size by one.
 */
 #include<iostream>
 using namespace std;
+//this is node class to create the individual node.
+
+
+
 
 void remove_elements(int arr[],int size)
 {
