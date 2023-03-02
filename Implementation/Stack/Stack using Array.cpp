@@ -13,6 +13,7 @@ private:
     int capacity;    // this variable will store the capacity of the stack.
 
 public:
+    // constructor
     StackUsingArray(int siz)
     {
         Stack = new int[siz];    // Created Stack in dynamic memory.
